@@ -7,11 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="member" />
         <module name="product" />
+        <module name="coupon" />
+        <module name="member" />
+        <module name="generator" />
         <module name="ware" />
         <module name="renren-fast" />
-        <module name="coupon" />
         <module name="order" />
       </profile>
     </annotationProcessing>
@@ -19,6 +20,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="coupon" options="-parameters" />
+      <module name="generator" options="-parameters" />
       <module name="gulimall" options="-parameters" />
       <module name="member" options="-parameters" />
       <module name="order" options="-parameters" />
