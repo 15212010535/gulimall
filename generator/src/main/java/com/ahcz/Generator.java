@@ -7,18 +7,16 @@ import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
 import java.util.Collections;
 
-/**
- * 代码生成器，用生成需要的代码
- */
 public class Generator {
     public static void main(String[] args) {
-        String url = "jdbc:mysql://localhost:3306/gulimall_oms";
+        String url = "jdbc:mysql://localhost:3306/gulimall_pms";
         String username = "root";
         String password = "root";
-        String file_path = "F://dev_data//java//project//gulimall//ware//src//main//";
+        String module_name = "product";
+        String file_path = "F://dev_data//java//project//gulimall//" + module_name + "//src//main//";
         String parent_name = "com.ahcz";
-        String table_name = "oms_order";
-        String table_prefix = "oms_";
+        String table_prefix = "pms_";
+        String table_name = table_prefix + "spu_info_desc";
         AbstractTemplateEngine engine = new FreemarkerTemplateEngine();
         FastAutoGenerator.create(url, username, password)
                 .globalConfig(builder -> {
@@ -28,7 +26,7 @@ public class Generator {
                 })
                 .packageConfig(builder -> {
                     builder.parent(parent_name) // 设置父包名
-                            .pathInfo(Collections.singletonMap(OutputFile.xml, file_path + "resources")); // 设置mapperXml生成路径
+                            .pathInfo(Collections.singletonMap(OutputFile.xml, file_path + "resources//mapper")); // 设置mapperXml生成路径
                 })
                 .strategyConfig(builder -> {
                     builder.addInclude(table_name) // 设置需要生成的表名
