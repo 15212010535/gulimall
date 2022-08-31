@@ -3,6 +3,7 @@ package com.ahcz.member.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.ahcz.member.feign.CouponFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,6 +30,21 @@ import com.ahcz.common.utils.R;
 public class MemberController {
     @Autowired
     private MemberService memberService;
+
+    @Autowired
+    private CouponFeignService couponFeignService;
+
+    @RequestMapping("/coupons")
+    public R test(){
+        MemberEntity member = new MemberEntity();
+        member.setNickname("张三");
+        R memberCoupons = couponFeignService.memberCoupons();
+        Object coupons = memberCoupons.get("coupons");
+        R ok = R.ok();
+        ok.put("member",member);
+        ok.put("coupons",coupons);
+        return ok;
+    }
 
     /**
      * 列表
